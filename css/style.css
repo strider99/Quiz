@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'vitaminregular';
+    src: url('../fonts/VITAMIN_-webfont.eot');
+    src: url('../fonts/VITAMIN_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/VITAMIN_-webfont.woff') format('woff'),
+         url('../fonts/VITAMIN_-webfont.ttf') format('truetype'),
+         url('../fonts/VITAMIN_-webfont.svg#vitaminregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*//#8A9B0F
+#D1F2A5*/
+
+body {
+	background: url(../img/wood1.png) repeat;
+	background-attachment: fixed;
+	color: black;
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+
+}
+
+#container {
+	width: 60%;
+	background: #B2FFD0;
+	margin: 20px auto;
+	border-radius: 20px;
+	overflow: auto;
+	padding: 25px;
+}
+
+header {
+	text-align: center;
+	border-bottom: #fff dashed 1px;
+
+}
+
+header h1 {
+
+	font-family: 'vitaminregular', sans-serif;
+	font-size: 50px;
+
+	box-shadow: 3px 3px 3px black;
+	
+	background-color: #D1F2A5;
+	background: -webkit-gradient(linear,left top, left bottom, from(#D1F2A5), to(#8A9B0F));
+	background: -moz-linear-gradient(top, #D1F2A5, #8A9B0F);
+
+	
+	color: black;
+	padding: 10px;
+	margin: 0px;
+	display: inline-block;
+}
+
+header p {
+	padding: 0px;
+	margin-top: 5px;
+	color: #000;
+
+}
+
+section {
+	min-height: 400px;
+
+	}
+
+footer {
+	text-align: center;
+}
+
+input[type="submit"] {
+	background-color: #f06226 ;
+	border: 0px;
+	padding: 10px 15px;
+	color: #fff;
+	cursor: pointer;
+	/*width: 25%;
+	height: 45%;*/
+}
+
+#results h3 {
+	background: #f06226;
+	padding: 0px;
+	margin: 10px 0;
+}
+
+#results span {
+	color: #000;
+	font-weight: bold;
+}
