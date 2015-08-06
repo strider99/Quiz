@@ -73,12 +73,24 @@ footer {
 
 input[type="submit"] {
 	background-color: #f06226 ;
+    
+    background: -webkit-gradient(linear,left top, left bottom, from(#F5DCD1), to(#F06226));
+    background: -moz-linear-gradient(top, #F5DCD1, #F06226);
+    
 	border: 0px;
 	padding: 10px 15px;
-	color: #fff;
+	color: #000;
 	cursor: pointer;
 	/*width: 25%;
 	height: 45%;*/
+}
+
+input[type="submit"]:hover {
+    
+    background: -webkit-gradient(linear, left top, left bottom, from(#D1DFF5), to(#1D6EF0));
+    background: -moz-linear-gradient(top, #D1DFF5, #1D6EF0); 
+        
+    border-bottom: 3px solid black;
 }
 
 #results h3 {
