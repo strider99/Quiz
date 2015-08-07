@@ -57,7 +57,8 @@ footer {
   text-align: center;
 }
 
-input[type="submit"], input[type="reset"] {
+input[type="submit"],
+input[type="reset"] {
   background-color: #f06226;
   background: -webkit-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
   background: -o-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
@@ -70,20 +71,25 @@ input[type="submit"], input[type="reset"] {
   height: 45%;*/
 }
 
-input[type="submit"]:hover, input[type="reset"]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
   background: -webkit-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
   background: -o-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
   background: linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
   /*  border-bottom: 3px solid black;*/
 }
 
-#results h3 {
+.results {
+  display: none;
+}
+
+.results h3 {
   background: #f06226;
   padding: 0px;
   margin: 10px 0;
 }
 
-#results span {
+.results span {
   color: #000;
   font-weight: bold;
 }
@@ -91,7 +97,6 @@ input[type="submit"]:hover, input[type="reset"]:hover {
 .buttons {
   position: fixed;
   right: 0;
-/*  width: 200px;*/
   top: 50%;
 }
 
@@ -103,6 +108,9 @@ input[type="submit"]:hover, input[type="reset"]:hover {
 
 .question {
   list-style-position: inside;
+  padding-left: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .answers {
@@ -116,6 +124,12 @@ input[type="submit"]:hover, input[type="reset"]:hover {
 
 .answer label {
   display: block;
+}
+
+.answer label:hover {
+  cursor: default;
+  cursor: pointer;
+  text-shadow: 0 0 3px #555;
 }
 
 .question[data-question-template],
