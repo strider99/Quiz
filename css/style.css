@@ -57,7 +57,7 @@ footer {
   text-align: center;
 }
 
-input[type="submit"] {
+input[type="submit"], input[type="reset"] {
   background-color: #f06226;
   background: -webkit-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
   background: -o-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
@@ -70,7 +70,7 @@ input[type="submit"] {
   height: 45%;*/
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, input[type="reset"]:hover {
   background: -webkit-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
   background: -o-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
   background: linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
@@ -88,8 +88,45 @@ input[type="submit"]:hover {
   font-weight: bold;
 }
 
-.questions {}
+.buttons {
+  position: fixed;
+  right: 0;
+/*  width: 200px;*/
+  top: 50%;
+}
+
+.questions {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
 
 .question {
+  list-style-position: inside;
+}
+
+.answers {
+  font-size: 16px;
+}
+
+.answer {
+  list-style-type: lower-alpha;
+  list-style-position: inside;
+}
+
+.answer label {
+  display: block;
+}
+
+.question[data-question-template],
+.answer[data-answer-template] {
   display: none;
+}
+
+.correct {
+  background-color: darkseagreen;
+}
+
+.wrong {
+  background-color: palevioletred;
 }
