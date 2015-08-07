@@ -1,12 +1,17 @@
-/* eslint-disable */
+/* eslint-enable */
 
 (function (window) {
+  $(document).ready(function () {
+    questionAnswerCreator();
+    quizInterfaceCreator();
+  });
 
-    function QA(question, answer) {
-      this.question = question;
-      this.answer = answer;
-      this.answerOptions = [];
-    }
+
+  function QA(question, answer) {
+    this.question = question;
+    this.answer = answer;
+    this.answerOptions = [];
+  }
 
   /*
    * Details of the quiz
@@ -35,12 +40,12 @@
       /* Generate three random answers using default answers list
        * if answerOptions is not given or
        * if answerOptions is not an array or
-       * if answerOptions is an empty array */ // @FIXME [X]
+       * if answerOptions is an empty array */ // @FIXME [X] empty array check
       if (!answerOptions || !(answerOptions instanceof Array) || !answerOptions.length) {
         // @TODO [X] use three random answers from default answerOptions list
         answerOptions = [];
-        (function () {
-          while (answerOptions.length <= 3) {
+        (function addRandAnswers() {
+          while (answerOptions.length < 3) {
             /* generate a random number
              * range [0 - defaultAnswerOptions.length (exclusive)] */
             var rand = Math.floor(Math.random() * quiz.defaultAnswerOptions.length),
@@ -60,6 +65,10 @@
 
       // add new question answer to questionAnswerList
       quiz.questionAnswerList.push(questionAnswer);
+
+      console.log(questionAnswer); // @CHANGES REMOVE CONSOLE
+
+      return this;
     },
 
     /* Default answers to populate in answerOptions */
@@ -93,6 +102,13 @@
                            'Hardwar', 'Dehradun', 'Nainital', 'Almora',
                            'Alipore', 'Medinipur', 'Krishnanagar', 'Kolkata']
   };
+
+  /*
+   * Repopulate the answerOptions
+   * Reset score
+   */
+  function renewQuiz() { // @TODO repopulate answerOptions
+  }
 
   /*
    * Generate question and answer sets.
@@ -132,27 +148,51 @@
   /*
    * Generate quiz interface.
    */
-  function quizInterfaceCreator() { // @FIXME
-    var questions = $('.questions'); // all questions
-    var qTemplate = questions.find('.question').clone();
-    var question1 = 'What is the capital of Andhra Pradesh?',
-      answer1 = 'Vishakhapatnam'; // demo
-    qTemplate.find('h3').html(question1); // question
+  function quizInterfaceCreator() { // @FIXME Reformat Interface
+    var questions = $('.questions'); // questions container
+    /* question template */
+    var qTemplate = questions.find('.question[data-question-template]');
 
-    var answers = qTemplate.find('.answers'); // all answers
-    var input = qTemplate.find('input');
-    input.attr('value', answer1);
-    var label = qTemplate.find('label');
-    label.html(input).append(answer1);
-    qTemplate.css('display', 'initial');
+    quiz.questionAnswerList.forEach(function (qa, qaIndex) {
+      var question = qTemplate.clone(true);
+      question.removeAttr('data-question-template'); // remove template attr
+      question.attr('data-question-id', qaIndex); // add question indexes
 
-    $('.questions').append(qTemplate);
-    console.log('Question Added');
+      question.find('.questionText').html(qa.question); // add question
+
+      var answers = question.find('.answers'); // answers container
+      /* answer template */
+      var aTemplate = question.find('.answer[data-answer-template]');
+
+      var answerList = [qa.answer]; // add real answer
+      [].push.apply(answerList, qa.answerOptions); // add all optional answers
+
+      /* shuffle answerList */
+      (function shuffleAnswers() {
+        // @TODO shuffle answers in answerList
+      })();
+
+      answerList.forEach(function (ans) {
+        var answer = aTemplate.clone(true);
+        answer.removeAttr('data-answer-template'); // remove template attr
+
+        /* insert answer value in input */
+        var input = answer.find('input');
+        input.attr('name', 'qa' + qaIndex).attr('value', ans);
+
+        /* insert answer text */
+        answer.find('.answerText').html(ans);
+
+        /* add answer to the list of answers */
+        answers.append(answer);
+        console.log('Added answer - ' + ans);
+      });
+
+      questions.append(question);
+      console.log('Question Added - ' + qa.question);
+    });
+
   }
-
-  $(document).ready(function () {
-    quizInterfaceCreator();
-  });
 
   function submitAnswers() {
     var total = 29;
