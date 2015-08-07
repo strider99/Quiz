@@ -172,7 +172,11 @@
 
       /* shuffle answerList */
       (function shuffleAnswers() {
-        // @TODO shuffle answers in answerList
+        var len = answerList.length;
+        while (len) {
+          var rand = Math.floor(Math.random() * len--);
+          answerList.unshift(answerList.splice(rand, 1));
+        }
       })();
 
       answerList.forEach(function (ans) {
@@ -204,6 +208,11 @@
 
     /* find all checked inputs */
     var checked = $('.questions').find('input:checked');
+
+    /* if none checked, do nothing */
+    if (!checked.length) {
+      return;
+    }
 
     checked.each(function (i, ch) {
       /* get question id of checked answer */
