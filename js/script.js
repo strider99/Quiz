@@ -41,9 +41,8 @@
       /* Generate three random answers using default answers list
        * if answerOptions is not given or
        * if answerOptions is not an array or
-       * if answerOptions is an empty array */ // @FIXME [X] empty array check
+       * if answerOptions is an empty array */
       if (!answerOptions || !(answerOptions instanceof Array) || !answerOptions.length) {
-        // @TODO [X] use three random answers from default answerOptions list
         answerOptions = [];
         (function addRandAnswers() {
           while (answerOptions.length < 3) {
@@ -107,8 +106,11 @@
    * Reset score
    */
   function renewQuiz() { // @TODO repopulate answerOptions
+    quiz.score = 0;
     var questions = $('.questions').find('.question');
     questions.removeClass('wrong correct');
+    var results = $('.results');
+    results.hide();
   }
 
   /*
@@ -149,7 +151,7 @@
   /*
    * Generate quiz interface.
    */
-  function quizInterfaceCreator() { // @FIXME [X] Reformat Interface
+  function quizInterfaceCreator() {
     var questions = $('.questions'); // questions container
     /* question template */
     var qTemplate = questions.find('.question[data-question-template]');
@@ -197,34 +199,35 @@
   /* Check answers to the question */
   function checkAnswers(ev) {
     ev.preventDefault();
+    // reset score to zero (0)
+    quiz.score = 0;
+
+    /* find all checked inputs */
     var checked = $('.questions').find('input:checked');
 
     checked.each(function (i, ch) {
+      /* get question id of checked answer */
       var questionId = Number($(ch).attr('name').replace(/qa(\d+)/, '$1')),
-        answer = $(ch).attr('value'),
+        answer = $(ch).attr('value'), // get the checked answer
         questionBox = $('.question[data-question-id=' + questionId + ']');
 
-      console.log(questionId);
-      console.log(questionBox);
-
+      /* check if the answer with the question id mathces the checked answer */
       if (quiz.questionAnswerList[questionId].answer === answer) {
         questionBox.removeClass('wrong');
         questionBox.addClass('correct');
+
+        // increment the score
+        quiz.score++;
       } else {
         questionBox.removeClass('correct');
         questionBox.addClass('wrong');
       }
     });
+
+    var results = $('.results');
+    results.find('.score').html(quiz.score);
+    results.find('.total').html(quiz.questionAnswerList.length);
+    results.show();
   }
-
-  function submitAnswers() {
-
-    //Display results
-
-    var results = document.getElementById('results');
-    results.innerHTML = '<h3> You scored <span>' + score + '</span> out of <span> ' + total + '</span></h3>';
-
-  }
-
 
 })(this);
