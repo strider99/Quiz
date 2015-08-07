@@ -1,105 +1,95 @@
 @font-face {
-    font-family: 'vitaminregular';
-    src: url('../fonts/VITAMIN_-webfont.eot');
-    src: url('../fonts/VITAMIN_-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/VITAMIN_-webfont.woff') format('woff'),
-         url('../fonts/VITAMIN_-webfont.ttf') format('truetype'),
-         url('../fonts/VITAMIN_-webfont.svg#vitaminregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'vitaminregular';
+  src: url('../fonts/VITAMIN_-webfont.eot');
+  src: url('../fonts/VITAMIN_-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/VITAMIN_-webfont.woff') format('woff'), url('../fonts/VITAMIN_-webfont.ttf') format('truetype'), url('../fonts/VITAMIN_-webfont.svg#vitaminregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/*//#8A9B0F
-#D1F2A5*/
-
 body {
-	background: url(../img/wood1.png) repeat;
-	background-attachment: fixed;
-	color: black;
-	font-family: 'Arial', sans-serif;
-	font-size: 14px;
+  /*  background: url(../img/wood1.png) repeat;*/
 
+  background-attachment: fixed;
+  color: black;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
 }
 
 #container {
-	width: 60%;
-	background: #B2FFD0;
-	margin: 20px auto;
-	border-radius: 20px;
-	overflow: auto;
-	padding: 25px;
+  width: 60%;
+  background: #B2FFD0;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: auto;
+  padding: 25px;
 }
 
 header {
-	text-align: center;
-	border-bottom: #fff dashed 1px;
-
+  text-align: center;
+  border-bottom: #fff dashed 1px;
 }
 
 header h1 {
-
-	font-family: 'vitaminregular', sans-serif;
-	font-size: 50px;
-
-	box-shadow: 3px 3px 3px black;
-	
-	background-color: #D1F2A5;
-	background: -webkit-gradient(linear,left top, left bottom, from(#D1F2A5), to(#8A9B0F));
-	background: -moz-linear-gradient(top, #D1F2A5, #8A9B0F);
-
-	
-	color: black;
-	padding: 10px;
-	margin: 0px;
-	display: inline-block;
+  font-family: 'vitaminregular', sans-serif;
+  font-size: 50px;
+  box-shadow: 3px 3px 3px black;
+  background-color: #D1F2A5;
+  background: -webkit-linear-gradient(rgba(209, 242, 165, 1) 0%, rgba(139, 155, 15, 1) 100%);
+  background: -o-linear-gradient(rgba(209, 242, 165, 1) 0%, rgba(139, 155, 15, 1) 100%);
+  background: linear-gradient(rgba(209, 242, 165, 1) 0%, rgba(139, 155, 15, 1) 100%);
+  color: black;
+  padding: 10px;
+  margin: 0px;
+  display: inline-block;
 }
 
 header p {
-	padding: 0px;
-	margin-top: 5px;
-	color: #000;
-
+  padding: 0px;
+  margin-top: 5px;
+  color: #000;
 }
 
 section {
-	min-height: 400px;
-
-	}
+  min-height: 400px;
+}
 
 footer {
-	text-align: center;
+  text-align: center;
 }
 
 input[type="submit"] {
-	background-color: #f06226 ;
-    
-    background: -webkit-gradient(linear,left top, left bottom, from(#F5DCD1), to(#F06226));
-    background: -moz-linear-gradient(top, #F5DCD1, #F06226);
-    
-	border: 0px;
-	padding: 10px 15px;
-	color: #000;
-	cursor: pointer;
-	/*width: 25%;
-	height: 45%;*/
+  background-color: #f06226;
+  background: -webkit-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
+  background: -o-linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
+  background: linear-gradient(rgba(245, 220, 209, 1) 0%, rgba(240, 98, 38, 1) 100%);
+  border: 0px;
+  padding: 10px 15px;
+  color: #000;
+  cursor: pointer;
+  /*width: 25%;
+  height: 45%;*/
 }
 
 input[type="submit"]:hover {
-    
-    background: -webkit-gradient(linear, left top, left bottom, from(#D1DFF5), to(#1D6EF0));
-    background: -moz-linear-gradient(top, #D1DFF5, #1D6EF0); 
-        
-    border-bottom: 3px solid black;
+  background: -webkit-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
+  background: -o-linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
+  background: linear-gradient(rgba(209, 223, 245, 1) 0%, rgba(29, 110, 240, 1) 100%);
+  /*  border-bottom: 3px solid black;*/
 }
 
 #results h3 {
-	background: #f06226;
-	padding: 0px;
-	margin: 10px 0;
+  background: #f06226;
+  padding: 0px;
+  margin: 10px 0;
 }
 
 #results span {
-	color: #000;
-	font-weight: bold;
+  color: #000;
+  font-weight: bold;
+}
+
+.questions {}
+
+.question {
+  display: none;
 }
