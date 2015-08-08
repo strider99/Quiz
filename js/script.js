@@ -1,6 +1,8 @@
 /* eslint-enable */
 
 (function (window) {
+  'use strict';
+
   $(document).ready(function () {
     questionAnswerCreator();
     quizInterfaceCreator();
@@ -105,10 +107,19 @@
    * Repopulate the answerOptions
    * Reset score
    */
-  function renewQuiz() { // @TODO repopulate answerOptions
+  function renewQuiz(ev) {
+    // reset score to zero (0)
     quiz.score = 0;
+
     var questions = $('.questions').find('.question');
-    questions.removeClass('wrong correct');
+
+    // removes all questions exept the template
+    questions.not('[data-question-template]').remove();
+
+    // re-create quiz interface
+    quizInterfaceCreator();
+
+    // hide results section
     var results = $('.results');
     results.hide();
   }
@@ -152,6 +163,9 @@
    * Generate quiz interface.
    */
   function quizInterfaceCreator() {
+    // shuffle questions
+    shuffle(quiz.questionAnswerList);
+
     var questions = $('.questions'); // questions container
     /* question template */
     var qTemplate = questions.find('.question[data-question-template]');
@@ -170,14 +184,9 @@
       var answerList = [qa.answer]; // add real answer
       [].push.apply(answerList, qa.answerOptions); // add all optional answers
 
-      /* shuffle answerList */
-      (function shuffleAnswers() {
-        var len = answerList.length;
-        while (len) {
-          var rand = Math.floor(Math.random() * len--);
-          answerList.unshift(answerList.splice(rand, 1));
-        }
-      })();
+
+
+      shuffle(answerList);
 
       answerList.forEach(function (ans) {
         var answer = aTemplate.clone(true);
@@ -198,6 +207,17 @@
       questions.append(question);
     });
 
+  }
+
+  /* shuffle list
+   * @param suffleArr array list to shuffle
+   */
+  function shuffle(shuffleArr) {
+    for (var start = 0, len = shuffleArr.length; start < len; start++) {
+      var rand = Math.floor(Math.random() * len);
+      var question = shuffleArr.splice(rand, 1)[0];
+      shuffleArr.unshift(question);
+    }
   }
 
   /* Check answers to the question */
