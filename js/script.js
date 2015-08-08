@@ -185,7 +185,7 @@
       [].push.apply(answerList, qa.answerOptions); // add all optional answers
 
 
-
+      // shuffle answers
       shuffle(answerList);
 
       answerList.forEach(function (ans) {
@@ -215,6 +215,7 @@
   function shuffle(shuffleArr) {
     for (var start = 0, len = shuffleArr.length; start < len; start++) {
       var rand = Math.floor(Math.random() * len);
+      // splice returns an array. Grab the first element only
       var question = shuffleArr.splice(rand, 1)[0];
       shuffleArr.unshift(question);
     }
@@ -253,6 +254,7 @@
       }
     });
 
+    /* update results section */
     var results = $('.results');
     results.find('.score').html(quiz.score);
     results.find('.total').html(quiz.questionAnswerList.length);
